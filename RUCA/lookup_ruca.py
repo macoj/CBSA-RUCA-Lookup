@@ -31,7 +31,8 @@ def fips_to_ruca(fips):
     Takes a FIPS-11 code, retrieves the matching RUCA secondary code from the
     RUCA spreadsheet.
     """
-    df = pd.read_csv("FIPS-RUCA.csv", dtype="str")
+    # this script assumes it is being run from the top-level directory.
+    df = pd.read_csv("RUCA/FIPS-RUCA.csv", dtype="str")
     # first reduce the df to the row with that fips, then extract the RUCA cell value
     return df[df.iloc[:,0]==fips].iloc[0][1]
 
