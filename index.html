@@ -1,0 +1,26 @@
+<html>
+
+<head>
+<title>RUCA and CBSA lookup tool</title>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./functions.js"></script>
+</head>
+
+<body>
+	<p>
+	CBSA type lookup: input five-digit CBSA. It tells you whether it's a micro or a metro area.
+	<br>
+	CBSA <input type="text" id="cbsa">
+	<button onclick="getCBSACode()">Get CBSA Code</button>
+	<br>
+	<br>
+	If the above doesn't work...
+	<br>
+	<button onclick="openExternalCBSA()">Open External CBSA Lookup Page</button>
+	</p>
+
+	<p id="cbsatype"></p>
+</body>
+
+</html>

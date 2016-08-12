@@ -16,15 +16,9 @@ directory.
 app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
-def respond():
-    """
-    Handle incoming requests
-    """
-
-    # retrieve message. 
-    received_message = request.values.get('Body').strip().lower()
-
-    return "Hello" + received_message + "World"
+def index():
+    print "Got a request..."
+    return "Hello World!"    
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
