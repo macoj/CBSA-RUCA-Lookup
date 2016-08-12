@@ -4,19 +4,20 @@ function openExternalCBSA(){
 }
 
 function getCBSACode(){
-    var cbsa = document.getElementById('cbsa').value;
-    document.getElementById('cbsatype').innerHTML = "asdf";
+    var address = document.getElementById('address').value;
+    document.getElementById('cbsatype').innerHTML = address;
     $.ajax({
-      type: "POST",
-      url: "http://0.0.0.0:5000/",
-      data: cbsa,
-      success: function(data)
+      type: "GET",
+      url: "http://localhost:5000/",
+      data: {"address":address},
+      dataType: "jsonp",
+      success: function(returndata)
       {
-          alert("Successful");
+        document.getElementById('cbsatype').innerHTML = JSON.stringify(returndata);
       },
-      error: function(data)
+      error: function(returndata)
         {
-            alert("fail");
+            alert(JSON.stringify(returndata));
         }
     });
 }
