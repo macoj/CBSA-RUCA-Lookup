@@ -27,10 +27,6 @@ def index():
         print "Error was generated!"
         RUCA_code = "ERROR"
 
-    print ">>>>> CBSA CODE", CBSA_code
-    print ">>>>> CBSA DESIGNATION", CBSA_designation
-    print ">>>>> RUCA CODE", RUCA_code
-    #resp = Response(var, status=200, mimetype='text/plain')
     response = '{0}({1})'.format(callback,  {'CBSA_code' : CBSA_code,
                                              'CBSA_designation' : CBSA_designation,
                                              'RUCA_code' : RUCA_code})
