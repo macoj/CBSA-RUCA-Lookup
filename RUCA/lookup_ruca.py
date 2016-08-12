@@ -36,7 +36,7 @@ def fips_to_ruca(fips):
     # first reduce the df to the row with that fips, then extract the RUCA cell value
     return df[df.iloc[:,0]==fips].iloc[0][1]
 
-def address_to_ruca(address):
+def address_to_RUCA(address):
     """
     wraps the two above functions.
     """

@@ -2,13 +2,8 @@
 
 from CBSA import lookup_cbsa
 from RUCA import lookup_ruca
-
-from flask import Flask, request, redirect, Response, current_app
-import json
-from functools import wraps
+from flask import Flask, request
 from os import environ
-# only import stdout if you need to debug. Then use stdout.flush() after print.
-# from sys import stdout
 
 app = Flask(__name__)
 
@@ -18,8 +13,20 @@ def index():
     print ">>>> Request args", request.args
     callback = request.args.get('callback')
     address  = request.args.get('address')
-    CBSA_code, CBSA_designation = lookup_cbsa.address_to_cbsa(address)
-    RUCA_code = lookup_ruca.address_to_ruca(address)
+    
+    # catching possible errors. Don't think there should be any, but I don't want
+    # to leave the user hanging.
+    try:
+        CBSA_code, CBSA_designation = lookup_cbsa.address_to_CBSA(address)
+    except:
+        print "Error was generated!"
+        CBSA_code, CBSA_designation = "ERROR", "ERROR"
+    try:
+        RUCA_code = lookup_ruca.address_to_RUCA(address)
+    except:
+        print "Error was generated!"
+        RUCA_code = "ERROR"
+
     print ">>>>> CBSA CODE", CBSA_code
     print ">>>>> CBSA DESIGNATION", CBSA_designation
     print ">>>>> RUCA CODE", RUCA_code
