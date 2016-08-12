@@ -9,7 +9,7 @@ function getCBSACode(){
     $.ajax({
       type: "POST",
       url: "http://0.0.0.0:5000/",
-      data: {"this is a request"},
+      data: cbsa,
       success: function(data)
       {
           alert("Successful");
