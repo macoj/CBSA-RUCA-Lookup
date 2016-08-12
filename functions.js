@@ -6,14 +6,17 @@ function openExternalCBSA(){
 function getCBSACode(){
     var cbsa = document.getElementById('cbsa').value;
     document.getElementById('cbsatype').innerHTML = "asdf";
-    $.ajax('http://jsonp-aware-endpoint.com/user', {
-        jsonp: 'callback',
-        dataType: 'jsonp',
-        data: {
-            id: 123
+    $.ajax({
+      type: "POST",
+      url: "http://0.0.0.0:5000/",
+      data: {"this is a request"},
+      success: function(data)
+      {
+          alert("Successful");
+      },
+      error: function(data)
+        {
+            alert("fail");
         }
-    }).then(function(response) {
-        // handle requested data from server
     });
-
 }

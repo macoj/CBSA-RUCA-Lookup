@@ -14,3 +14,7 @@ The dataset downloadable there contains more helpful information. Again we use j
 Note that there are different types of FIPS-codes, e.g. 15-digit vs. 11-digit. The only difference is that the final four digits of the 15-digit code are [block group and block numbers](http://www.geolytics.com/USCensus,Geocode,Data,Geography,Products.asp). So we can query the [FCC's API](https://www.fcc.gov/general/census-block-conversions-api) for 15-digit FIPS codes and simply truncate the final four. See [here](https://www.policymap.com/blog/2012/08/tips-on-fips-a-quick-guide-to-geographic-place-codes-part-iii/) for another short introduction to FIPS codes.
 
 The FIPS -> RUCA mappings are definitely correct. The Address -> FIPS mappings are subject to greater error. If in doubt, use the mapping tool provided by the government [here](https://geomap.ffiec.gov/FFIECGeocMap/GeocodeMap1.aspx) to double-check your results.
+
+## Structure
+
+The index.html and functions.js are deployed externally, not to Heroku. We query the Heroku server via AJAXin functions.js.
