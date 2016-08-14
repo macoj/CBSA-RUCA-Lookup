@@ -18,3 +18,7 @@ The FIPS -> RUCA mappings are definitely correct. The Address -> FIPS mappings a
 ## Structure
 
 The index.html and functions.js are deployed externally, not to Heroku. We query the Heroku server via AJAXin functions.js.
+
+## Use
+
+You can access the tool at johnloeber.com/geolookup.
