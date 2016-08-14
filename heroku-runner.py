@@ -14,8 +14,7 @@ def index():
     callback = request.args.get('callback')
     address  = request.args.get('address')
     
-    # catching possible errors. Don't think there should be any, but I don't want
-    # to leave the user hanging.
+    # catching errors in case of malformed input.
     try:
         CBSA_code, CBSA_designation = lookup_cbsa.address_to_CBSA(address)
     except:
@@ -27,8 +26,8 @@ def index():
         print "Error was generated!"
         RUCA_code = "ERROR"
 
-    response = '{0}({1})'.format(callback,  {'CBSA_code' : CBSA_code,
-                                             'CBSA_designation' : CBSA_designation,
+    # there's no need to return the five-digit CBSA code as well.
+    response = '{0}({1})'.format(callback,  {'CBSA_designation' : CBSA_designation,
                                              'RUCA_code' : RUCA_code})
     print ">>>> Response", response
     return response
