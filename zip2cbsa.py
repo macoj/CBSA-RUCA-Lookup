@@ -14,14 +14,13 @@ class Zip2CBSA:
         looks up a zipcode in the spreadsheet, gets the corresponding CBSA code
         and statistical area designation
         """
-        row = self.df[self.df.iloc[:, 0] == str(zipcode)]
-        cbsa_code = row.iloc[0][1]
-        cbsa_designation = row.iloc[0][2]
-        if pd.isnull(cbsa_code):
-            cbsa_code = None
-        if pd.isnull(cbsa_designation):
-            cbsa_designation = None
-        return cbsa_code, cbsa_designation
+        if type(zipcode) is not list:
+            zipcode = [zipcode]
+        zipcode = map(str, zipcode)
+        df_slice = self.df[self.df.ZIP5.isin(zipcode)]
+        result = df_slice.set_index('ZIP5').loc[zipcode].values
+        result = result if len(result) > 1 else result[0]
+        return result
 
     def address_to_cbsa(self, address):
         return self.zip2cbsa(Zip2CBSA.zip_lookup(address))
