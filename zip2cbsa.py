@@ -28,8 +28,7 @@ class Zip2CBSA:
     @staticmethod
     def zip_lookup(address):
         """
-        Lookup an address and get the zip code. This is super lazy; it would probably
-        be preferable to try to extract the zip from the address string.
+        Lookup an address and get the zip code.
         """
         zipcode = Geocoder.geocode(address).postal_code
         return zipcode
