@@ -14,8 +14,7 @@ class Zip2CBSA:
         looks up a zipcode in the spreadsheet, gets the corresponding CBSA code
         and statistical area designation
         """
-
-        row = self.df[self.df.iloc[:,0]==zipcode]
+        row = self.df[self.df.iloc[:, 0] == str(zipcode)]
         cbsa_code = row.iloc[0][1]
         cbsa_designation = row.iloc[0][2]
         if pd.isnull(cbsa_code):
